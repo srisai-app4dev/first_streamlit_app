@@ -23,12 +23,10 @@ fruityvice_response=requests.get("https://fruityvice.com/api/fruit/" + fruit_cho
 fruityvice_normalized=pandas.json_normalize(fruityvice_response.json())
 streamlit.dataframe(fruityvice_normalized)
 
-#sample_file2.txt
-snowflake-connector-python
-import snowflake.connector
-my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
-my_cur = my_cnx.cursor()
-my_cur.execute("SELECT * from fruit_load_list")
-my_data_row = my_cur.fetchone()
-streamlit.text("The fruit load list contains:")
-streamlit.text(my_data_row)
+add_my_fruit=streamlit.text_input('what fruit would you like to add?','apple')
+streamlit.write('The user entered the 2nd fruit as',add_my_fruit)
+
+fruityvice2_response=requests.get("https://fruityvice.com/api/fruit/" + add_my_fruit)
+fruityvice2_normalized=pandas.json_normalize(fruityvice2_response.json())
+streamlit.dataframe(fruityvice2_normalized)
+streamlit.text('Thanks for adding' add_my_fruit)
