@@ -36,23 +36,6 @@ try:
 except URLError as e:
   streamlit.error()
   
-streamlit.stop()
-add_my_fruit=streamlit.text_input('what fruit would you like to add?','apple')
-streamlit.write('The user entered the 2nd fruit as',add_my_fruit)
-
-fruityvice2_response=requests.get("https://fruityvice.com/api/fruit/" + add_my_fruit)
-fruityvice2_normalized=pandas.json_normalize(fruityvice2_response.json())
-streamlit.dataframe(fruityvice2_normalized)
-streamlit.write('Thanks for adding',add_my_fruit)
-
-streamlit.stop()
-
-
-my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
-my_cur = my_cnx.cursor()
-my_cur.execute("SELECT * from fruit_load_list")
-my_data_rows = my_cur.fetchall()
-streamlit.header("The fruit load list contains:")
 #sf related functions
 def get_fruit_load_list():
        with my_cnx.cursor() as my_cur:
