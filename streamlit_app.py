@@ -29,4 +29,4 @@ streamlit.write('The user entered the 2nd fruit as',add_my_fruit)
 fruityvice2_response=requests.get("https://fruityvice.com/api/fruit/" + add_my_fruit)
 fruityvice2_normalized=pandas.json_normalize(fruityvice2_response.json())
 streamlit.dataframe(fruityvice2_normalized)
-
+streamlit.write('Thanks for adding',add_my_fruit)
