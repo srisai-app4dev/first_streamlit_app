@@ -33,7 +33,7 @@ fruityvice2_response=requests.get("https://fruityvice.com/api/fruit/" + add_my_f
 fruityvice2_normalized=pandas.json_normalize(fruityvice2_response.json())
 streamlit.dataframe(fruityvice2_normalized)
 streamlit.write('Thanks for adding',add_my_fruit)
-my_cur.execute("insert into fruit_load_list values('from streamlit')")
+
 streamlit.stop()
 
 
